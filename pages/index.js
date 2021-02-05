@@ -5,24 +5,14 @@ import Footer from '../src/components/Footer'
 import QuizzBackground from '../src/components/QuizzBackground'
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
+import QuizzContainer from '../src/components/QuizzContainer';
 
 const Title = styled.h1`
   font-size: 50px;
   color: ${({ theme }) => theme.colors.primary};
 `;
-
-const QuizzContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
-  }
-`;
-
-
 
 
 export default function Home() {
@@ -45,15 +35,15 @@ export default function Home() {
                 event.preventDefault();
                 router.push(`./quizz?name=${name}`);
             }}>
-              <input 
-                onChange={function(event) {
+              <Input 
+                onChange={(event) => {
                   setName(event.target.value);
                 }}
                 placeholder="Digite seu nome" 
               />
-              <button type="submit" disabled={name.length === 0}>
+              <Button type="submit" disabled={name.length === 0}>
                 Bora, {name}
-              </button>
+              </Button>
             </form>
           </Widget.Content>
         </Widget>
